@@ -17,7 +17,7 @@ a {
 
 .container {
     display: flex;
-    font-size: 2em;
+    font-size: 1.7em;
     position: relative;
     box-sizing: border-box;
 }

@@ -60,8 +60,10 @@ a {
     background-color: #c2dfff;
 }
 
-.lateral .item:hover {
-    box-shadow: 0.2em 0.2em 0.2em #ffc9b2;
+@media (hover: hover) {
+    .lateral .item:hover {
+        box-shadow: 0.2em 0.2em 0.2em #ffc9b2;
+    }
 }
 
 /*.lateral.item:active {

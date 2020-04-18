@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-title" content="Dices">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="application-name" content="Dices">
+    <meta name="theme-color" content="#FFE8CB">
+    <title>Dices</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" href="style/index.css">
+</head>
+<body>
+<div class="container horizontal">
+    <div class="vertical lateral">
+        <a href="add/" class="item">Ajouter</a>
+        <div id="reroll" class="item">Relancer</div>
+    </div>
+    <div class="horizontal content">
+        <div id="result" class="result">
+            <span class="result-total">0</span> = <span class="result-neutral">0</span>/<span class="result-red">0</span>/<span class="result-blue">0</span>/<span class="result-green">0</span>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js')
+            .then(function (reg) {
+                // registration worked
+                console.log('SW Registration succeeded. Scope is ' + reg.scope);
+            }).catch(function (error) {
+            // registration failed
+            console.log('SW Registration failed with ' + error);
+        });
+    }
+</script>
+<script src="config/dices.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+html {
+    font-family: "Open Sans", sans-serif;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: #fff2ea;
+    color: #595959;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    display: flex;
+    font-size: 2em;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.container > div {
+    display: flex;
+    box-sizing: border-box;
+    flex-basis: 0;
+}
+
+.lateral {
+    flex-grow: 1;
+}
+
+.content {
+    min-width: 12em;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 2;
+}
+
+.vertical {
+    flex-flow: column;
+}
+
+.horizontal {
+    flex-flow: row wrap;
+}
+
+.item {
+    min-width: 12em;
+    height: 2em;
+    cursor: pointer;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    margin: 0.2em;
+    background-color: #c2dfff;
+}
+
+.lateral .item:hover {
+    box-shadow: 0.2em 0.2em 0.2em #ffc9b2;
+}
+
+/*.lateral.item:active {
+    box-shadow: inset 0.2em 0.2em 0.2em #d8e8ff;
+}*/
+
+.header .item {
+    min-height: 2em;
+}
+
+.result {
+    color: #fff2ea;
+    padding: 0.25em 0.5em;
+    background-color: #595959;
+}
+
+.neutral {
+    background-color: #FFE599;
+}
+
+.red {
+    background-color: #FFAFAF;
+}
+
+.blue {
+    background-color: #B4C6E7;
+}
+
+.green {
+    background-color: #C5E0B3;
+}
+
+.result-neutral {
+    color: #FFE599;
+}
+
+.result-red {
+    color: #FFAFAF;
+}
+
+.result-blue {
+    color: #B4C6E7;
+}
+
+.result-green {
+    color: #C5E0B3;
+}

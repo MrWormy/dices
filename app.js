@@ -35,7 +35,7 @@ function mapSet(map, key, value) {
 }
 
 function roll(diceList) {
-    const result = new Map([["total", 0],["neutral", 0],["red", 0],["blue", 0],["green", 0]]);
+    const result = new Map([["theoretical", 0],["total", 0],["neutral", 0],["red", 0],["blue", 0],["green", 0]]);
     
     diceList.forEach(d => {
        if (dices.hasOwnProperty(d)) {
@@ -43,6 +43,7 @@ function roll(diceList) {
            const rollV = values[Math.floor(Math.random() * values.length)];
            mapSet(result, color, rollV);
            mapSet(result, 'total', rollV);
+           mapSet(result, 'theoretical', values[values.length - 1]);
        }
     });
     

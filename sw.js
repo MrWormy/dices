@@ -1,6 +1,6 @@
 self.addEventListener('install', function(event) {
     event.waitUntil(
-        caches.open('applicationCache').then(function(cache) {
+        caches.open('dice-app-cache').then(function(cache) {
             return cache.addAll([
                 './',
                 'index.html',
@@ -23,14 +23,31 @@ self.addEventListener('install', function(event) {
     );
 });
 
-self.addEventListener('fetch', function(event) {
-    event.respondWith(caches.match(event.request, { ignoreSearch: true }).then(function(response) {
-        // caches.match() always resolves
-        // but in case of success response will have value
-        if (response !== undefined) {
-            return response;
-        } else {
-            return new Response('Unknown component');
-        }
-    }));
+self.addEventListener('fetch', (event) => {
+    let c;
+    event.respondWith(
+        caches.open('dice-app-cache')
+            .then(cache => {
+                c = cache;
+                return cache.match(event.request, { ignoreSearch: true })
+            })
+            .then((response) => {
+                // cache.match() always resolves
+                // but in case of success response will have value
+                if (response !== undefined) {
+                    return response;
+                } else if(new URL(event.request.url).host === self.location.host) {
+                    return new Promise((resolve) => {
+                        fetch(event.request).then((res) => {
+                            if (!res.ok) {
+                                resolve(new Response(`request failed`, {status: res.status, statusText: res.statusText}));
+                            }
+                            else { c.put(event.request, res.clone()).then(() => resolve(res)); }
+                        });
+                    });
+                } else {
+                    return new Response('Unexpected Component', {status: 404, statusText: 'Not Found'});
+                }
+            })
+    );
 });

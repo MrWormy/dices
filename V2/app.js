@@ -46,3 +46,4 @@ function reset() {
 createDices(dl);
 
 document.getElementById('reset').addEventListener('click', reset, false);
+document.getElementById('result').addEventListener('click', reset, false);

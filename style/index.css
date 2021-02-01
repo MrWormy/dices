@@ -32,6 +32,10 @@ a {
     flex-grow: 1;
 }
 
+.centered {
+    justify-content: center;
+}
+
 .content {
     min-width: 11em;
     padding: 10px;
@@ -50,10 +54,11 @@ a {
 
 .item {
     min-width: 11em;
-    height: 2em;
     cursor: pointer;
     display: flex;
     flex-grow: 1;
+    flex-basis: 0;
+    min-height: 2em;
     justify-content: center;
     align-items: center;
     margin: 0.2em;
@@ -61,7 +66,7 @@ a {
 }
 
 @media (hover: hover) {
-    .lateral .item:hover {
+    .lateral .item:hover, .centered .item:hover {
         box-shadow: 0.2em 0.2em 0.2em #ffc9b2;
     }
 }
